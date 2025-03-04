@@ -1,0 +1,2 @@
+# TradingPlatform
+Trading Platform simulation
