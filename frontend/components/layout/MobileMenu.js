@@ -43,9 +43,6 @@ export default function MobileMenu({ isMobileMenu }) {
                             </li>
                         </ul>
                     </li>
-                    <li className={`menu-item ${pathname === "/contact" ? "current-menu-item" : ""}`}>
-                        <Link href="/markets">Markets </Link>
-                    </li>
                     <li className={`menu-item menu-item-has-children ${checkParentActive(["/sell-crypto",
                         "/sell-crypto-amount",
                         "/sell-crypto-confirm",

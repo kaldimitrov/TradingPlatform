@@ -111,29 +111,3 @@
     }
   }
 }
-
-.markets {
-  .banner {
-    background: rgba(55, 114, 255, 0.1);
-    padding: 110px 0 100px;
-    .banner__content {
-      padding-top: 42px;
-      padding-right: 100px;
-
-      .desc {
-        font-family: $font-second;
-
-        span {
-          font-weight: 600;
-          color: var(--onsurface);
-        }
-      }
-    }
-  }
-}
-
-.is_dark {
-  .markets .banner {
-    background: #18191d;
-  }
-}

@@ -30,7 +30,6 @@ export default function Footer() {
                                             <h6 className="title">SERVICES</h6>
                                             <ul>
                                                 <li><Link href="/buy-crypto-select">Buy Crypto</Link></li>
-                                                <li><Link href="/markets">Markets</Link></li>
                                             </ul>
                                         </div>
                                     </div>

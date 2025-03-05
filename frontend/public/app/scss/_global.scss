@@ -326,6 +326,12 @@ h6,
   max-width: 1440px;
   width: 100%;
   margin: auto;
+
+  &.box {
+    box-shadow: 0px 14px 64px 0px rgba(80, 80, 255, 0.2);
+    border-radius: 20px;
+    padding: 32px 24px;
+  }
 }
 
 .row > * {

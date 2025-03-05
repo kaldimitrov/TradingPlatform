@@ -1,5 +1,6 @@
 @use "../abstracts/" as *;
 .footer {
+  background-color: var(--surface);
   .footer__main {
     padding: 81px 0 49px;
     .info {
