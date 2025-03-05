@@ -1,0 +1,22 @@
+{
+    "name": "crypto-trading-client",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "sass": "sass --watch public/app/scss/app.scss:public/app/dist/app.css"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.18",
+        "next": "14.1.4",
+        "react": "18.2.0",
+        "react-apexcharts": "^1.4.1",
+        "react-dom": "18.2.0",
+        "react-modal-video": "^2.0.1",
+        "sass": "^1.72.0",
+        "swiper": "^11.1.1"
+    }
+}
