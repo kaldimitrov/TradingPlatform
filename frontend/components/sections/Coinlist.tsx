@@ -37,9 +37,17 @@ export default function Coinlist() {
                                                         <th scope="row"><IconStar /></th>
                                                         <td>1</td>
                                                         <td>
-                                                            <Link href="#"><span className="icon-btc"><span className="path1" /><span className="path2" /></span>
+                                                            <Link href="#">
+                                                                <span className="icon-btc">
+                                                                    <img 
+                                                                        src={require(`cryptocurrency-icons/svg/color/${"btc"}.svg`).default.src} 
+                                                                        height={24} 
+                                                                        width={24}
+                                                                    />                                                                
+                                                                </span>
                                                                 <span>Bitcoin</span>
-                                                                <span className="unit">BTC</span></Link>
+                                                                <span className="unit">BTC</span>
+                                                            </Link>
                                                         </td>
                                                         <td className="boild">$56,623.54</td>
                                                         <td className="up">+1.45%</td>
