@@ -1,5 +1,5 @@
 'use client';
-import { usePathname } from 'next/navigation'; // Corrected import path
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function AddClassBody() {
@@ -9,11 +9,8 @@ export default function AddClassBody() {
         const bodyElement = document.querySelector('body');
 
         if (bodyElement) {
-            // Remove all classes
             bodyElement.classList.remove('home-3', 'home-2');
 
-            // Add class based on pathname
-            // Add class based on pathname
             if (pathname === '/home-v2') {
                 bodyElement.classList.add('home-2');
             } else if (pathname === '/home-v3') {

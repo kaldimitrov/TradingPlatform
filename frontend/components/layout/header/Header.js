@@ -18,10 +18,10 @@ export default function Header({ isMobileMenu, handleMobileMenu }) {
                                 <div className="header__left">
                                     <div className="logo">
                                         <Link className="light" href="/">
-                                            <img src="/assets/images/logo/logo.png" alt="" width={118} height={32} data-retina="assets/images/logo/logo@2x.png" data-width={118} data-height={32} />
+                                            <img src="/assets/images/logo/favicon.png" alt="" width={28} height={26} data-retina="assets/images/logo/logo@2x.png" data-width={118} data-height={32} />
                                         </Link>
                                         <Link className="dark" href="/">
-                                            <img src="/assets/images/logo/logo-dark.png" alt="" width={118} height={32} data-retina="assets/images/logo/logo-dark@2x.png" data-width={118} data-height={32} />
+                                            <img src="/assets/images/logo/favicon.png" alt="" width={28} height={26} data-retina="assets/images/logo/favicon.png" data-width={118} data-height={32} />
                                         </Link>
                                     </div>
                                     <div className="left__main">

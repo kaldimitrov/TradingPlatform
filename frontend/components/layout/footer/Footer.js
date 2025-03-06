@@ -10,7 +10,7 @@ export default function Footer() {
                             <div className="col-xl-4 col-md-8">
                                 <div className="info">
                                     <Link href="/" className="logo">
-                                        <img src="/assets/images/logo/log-footer.png" alt="" />
+                                        <img src="/assets/images/logo/favicon.png" alt="" />
                                     </Link>
                                     <h6>Contacts</h6>
                                     <ul className="list">

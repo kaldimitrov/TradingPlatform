@@ -5,7 +5,6 @@
 
   .crypto__main {
     background: var(--bg);
-    // box-shadow: 0px 14px 64px -48px rgba(15, 15, 15, 0.1);
     box-shadow: 0px 14px 64px 0px rgba(15, 15, 15, 0.1);
     border-radius: 24px;
     padding: 16px 32px 31px;
@@ -68,8 +67,6 @@
             &.active,
             &:hover {
               box-shadow: 0px 14px 64px 0px rgba(15, 15, 15, 0.1);
-              // background: #fff;
-              // filter: drop-shadow(rgba(128, 138, 157, 0.12) 0px 1px 2px) drop-shadow(rgba(128, 138, 157, 0.24) 0px 8px 32px);
             }
             .top {
               margin-bottom: 9px;
@@ -228,7 +225,6 @@
               border-radius: 12px 0 0 12px;
             }
 
-            // Set border-radius on the top-right and bottom-right of the last table data on the table row
             td:last-child,
             th:last-child {
               border-radius: 0 12px 12px 0;
@@ -282,7 +278,6 @@
               }
               &:hover {
                 background: rgba(55, 114, 255, 0.1);
-                // border-color: transparent;
 
                 a.btn {
                   border-color: var(--primary);
@@ -2910,18 +2905,6 @@
               background: url("./../../assets/images/icon/arrow-down.png")
                 var(--bg1) no-repeat 73% !important;
               background: var(--bg1);
-
-              // position: relative;
-
-              // &::before {
-              //   position: absolute;
-              //   content: "\f107";
-              //   font-family: "Font Awesome 6 Free";
-              //   right: 0;
-              //   top: 0;
-              //   z-index: 999;
-              //   background: red;
-              // }
             }
           }
 

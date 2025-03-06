@@ -1,5 +1,5 @@
-'use client'
-import Chart from 'react-apexcharts'
+'use client';
+import Chart from 'react-apexcharts';
 
 export default function ChartArea2() {
     const options = {
@@ -11,7 +11,6 @@ export default function ChartArea2() {
             sparkline: { enabled: !0 },
         },
         plotOptions: { bar: { columnWidth: "50%" } },
-        // labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
         xaxis: { crosshairs: { width: 1 } },
 
         stroke: {
@@ -29,7 +28,7 @@ export default function ChartArea2() {
             y: {
                 title: {
                     formatter: function (e) {
-                        return ""
+                        return "";
                     },
                 },
             },
@@ -43,17 +42,17 @@ export default function ChartArea2() {
                 },
             },
         },
-    }
+    };
     const series = [
         {
             data: [
                 55, 56, 51, 49, 63, 35, 44, 40, 36, 40, 54, 49, 63, 35, 44, 3,
             ],
         },
-    ]
+    ];
     return (
         <>
             <Chart options={options} series={series} type="area" height={40} width={100} />
         </>
-    )
+    );
 }

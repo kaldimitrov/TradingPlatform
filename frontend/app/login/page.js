@@ -29,7 +29,7 @@ export default function Login() {
                                                     </div>
                                                     <div className="form-group s1">
                                                         <label>Password </label>
-                                                        <input type="password" className="form-control" placeholder="Please enter a password." />
+                                                        <input type="password" className="form-control" placeholder="Password" />
                                                     </div>
                                                     <div className="form-group form-check">
                                                         <div>
