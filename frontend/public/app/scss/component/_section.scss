@@ -3813,39 +3813,6 @@
       position: relative;
       margin: 0 auto;
       overflow: hidden;
-      .custom-file-input {
-        width: 100%;
-        height: 100%;
-        color: transparent;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        text-align: center;
-        cursor: pointer;
-        border: none;
-        &::-webkit-file-upload-button {
-          display: none;
-        }
-
-        &::after {
-          z-index: 99;
-          font-family: "Font Awesome 6 free";
-          font-weight: 700;
-          content: "\f030";
-          color: #fff;
-          font-size: 14px;
-          position: absolute;
-          bottom: 6px;
-          right: 0;
-          width: 29px;
-          height: 29px;
-          border-radius: 50%;
-          background: var(--primary);
-          @include flex(center, center);
-        }
-      }
       img {
         position: absolute;
         z-index: 9;

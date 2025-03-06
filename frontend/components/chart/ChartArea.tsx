@@ -1,9 +1,10 @@
 'use client';
 import Chart from 'react-apexcharts';
+import { ChartColor } from '../enums/chart-color.enum';
 
-export default function ChartArea2() {
-    const options = {
-        colors: ["#D33535"],
+export default function ChartArea({ color }: { color: ChartColor }) {
+    const options: ApexCharts.ApexOptions | undefined = {
+        colors: [color],
         chart: {
             type: "area",
             width: 100,
@@ -27,7 +28,7 @@ export default function ChartArea2() {
             x: { show: !1 },
             y: {
                 title: {
-                    formatter: function (e) {
+                    formatter: function () {
                         return "";
                     },
                 },
@@ -38,7 +39,6 @@ export default function ChartArea2() {
             hover: {
                 filter: {
                     type: "none",
-                    value: 0,
                 },
             },
         },
@@ -46,7 +46,7 @@ export default function ChartArea2() {
     const series = [
         {
             data: [
-                55, 56, 51, 49, 63, 35, 44, 40, 36, 40, 54, 49, 63, 35, 44, 3,
+                25, 66, 41, 89, 63, 25, 44, 20, 36, 40, 54, 89, 63, 25, 80,
             ],
         },
     ];

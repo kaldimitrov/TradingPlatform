@@ -12,8 +12,7 @@ export default function UserProfile() {
                                 <div className="col-xl-3 col-md-12">
                                     <div className="user-info center">
                                         <div className="avt">
-                                            <input type="file" className="custom-file-input" id="imgInp" required />
-                                            <img id="blah" src="/assets/images/avatar.png" alt="no file" />
+                                            <img id="avatar" src="/assets/images/avatar.png" alt="no file" />
                                         </div>
                                         <h6 className="name">Peterson kennady</h6>
                                         <p>petersonkenn@demo.com</p>

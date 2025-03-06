@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 export default function SellCrypto() {
     const [flatTabs, setFlatTabs] = useState(1);
-    const handleFlatTabs = (index) => {
+    const handleFlatTabs = (index: number) => {
         setFlatTabs(index);
     };
 

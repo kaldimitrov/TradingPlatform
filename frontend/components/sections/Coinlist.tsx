@@ -3,6 +3,7 @@
 import Link from "next/link";
 import ChatList from "../chart/ChatList";
 import IconStar from "../elements/IconStar";
+import { ChartColor } from "../enums/chart-color.enum";
 export default function Coinlist() {
     return (
         <>
@@ -44,7 +45,7 @@ export default function Coinlist() {
                                                         <td className="up">+1.45%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={1} />
+                                                            <ChatList color={ChartColor.GREEN} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -59,7 +60,7 @@ export default function Coinlist() {
                                                         <td className="down">-5.12%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={2} />
+                                                            <ChatList color={ChartColor.RED} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -74,7 +75,7 @@ export default function Coinlist() {
                                                         <td className="down">-3.75%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={2} />
+                                                            <ChatList color={ChartColor.RED} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -89,7 +90,7 @@ export default function Coinlist() {
                                                         <td className="up">+1.45%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={1} />
+                                                            <ChatList color={ChartColor.GREEN} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -104,7 +105,7 @@ export default function Coinlist() {
                                                         <td className="up">+1.45%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={1} />
+                                                            <ChatList color={ChartColor.GREEN} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -118,7 +119,7 @@ export default function Coinlist() {
                                                         <td className="down">-2.22%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={2} />
+                                                            <ChatList color={ChartColor.RED} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -133,7 +134,7 @@ export default function Coinlist() {
                                                         <td className="up">+0.8%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={1} />
+                                                            <ChatList color={ChartColor.GREEN} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>
@@ -148,7 +149,7 @@ export default function Coinlist() {
                                                         <td className="up">+1.41%</td>
                                                         <td className="boild">$880,423,640,582</td>
                                                         <td>
-                                                            <ChatList color={1} />
+                                                            <ChatList color={ChartColor.GREEN} />
                                                         </td>
                                                         <td><Link href="#" className="btn">Trade</Link></td>
                                                     </tr>

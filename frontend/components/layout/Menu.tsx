@@ -12,8 +12,8 @@ export default function MainMenu() {
         setCurrentMenuItem(pathname);
     }, [pathname]);
 
-    const checkCurrentMenuItem = (path) => currentMenuItem === path ? "current-item" : "";
-    const checkParentActive = (paths) => paths.some(path => currentMenuItem.startsWith(path)) ? "current-menu-item" : "";
+    const checkCurrentMenuItem = (path: string) => currentMenuItem === path ? "current-item" : "";
+    const checkParentActive = (paths: string[]) => paths.some(path => currentMenuItem.startsWith(path)) ? "current-menu-item" : "";
 
     return (
         <>

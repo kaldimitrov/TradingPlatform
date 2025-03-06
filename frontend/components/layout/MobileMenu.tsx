@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function MobileMenu({ isMobileMenu }) {
-    const [isActive, setIsActive] = useState(0);
+export default function MobileMenu({ isMobileMenu }: { isMobileMenu: boolean }) {
+    const [isActive, setIsActive] = useState(0 as number | null);
 
-    const handleClick = (key) => {
-        setIsActive(prevState => prevState === key ? null : key);
+    const handleClick = (key: number | null) => {
+        setIsActive((prevState: number | null) => prevState === key ? null : key);
     };
     const pathname = usePathname();
     const [currentMenuItem, setCurrentMenuItem] = useState("");
@@ -17,8 +17,8 @@ export default function MobileMenu({ isMobileMenu }) {
         setCurrentMenuItem(pathname);
     }, [pathname]);
 
-    const checkCurrentMenuItem = (path) => currentMenuItem === path ? "current-item" : "";
-    const checkParentActive = (paths) => paths.some(path => currentMenuItem.startsWith(path)) ? "current-menu-item" : "";
+    const checkCurrentMenuItem = (path: string) => currentMenuItem === path ? "current-item" : "";
+    const checkParentActive = (paths: string[]) => paths.some(path => currentMenuItem.startsWith(path)) ? "current-menu-item" : "";
     return (
         <>
             <nav id="main-nav-mobi" className="main-nav" style={{ display: `${isMobileMenu ? "block" : "none"}` }}>

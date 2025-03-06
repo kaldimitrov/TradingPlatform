@@ -1,19 +1,17 @@
 'use client';
 import Layout from "@/components/layout/Layout";
-import Link from "next/link";
 import { useState } from "react";
-export default function SellCryptoDetails() {
+export default function BuyCryptoDetails() {
     const [flatTabs, setFlatTabs] = useState(1);
-    const handleFlatTabs = (index) => {
+    const handleFlatTabs = (index: number) => {
         setFlatTabs(index);
     };
-
     return (
         <>
 
-            <Layout breadcrumbTitle="Sell Crypto">
+            <Layout breadcrumbTitle="Buy Crypto">
                 <div>
-                    <section className="sell-confirm buy-crypto flat-tabs">
+                    <section className="buy-crypto flat-tabs">
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-3">
@@ -25,7 +23,7 @@ export default function SellCryptoDetails() {
                                 </div>
                                 <div className="col-md-9">
                                     <div className="content-tab">
-                                        <div className="content-inner" style={{ display: `${flatTabs === 1 ? "block" : "none"}` }}>
+                                        <div className="content-inner buy-crypto__main" style={{ display: `${flatTabs === 1 ? "block" : "none"}` }}>
                                             <div className="top">
                                                 <ul className="top-list">
                                                     <li className="done">
@@ -33,7 +31,7 @@ export default function SellCryptoDetails() {
                                                             <span>
                                                                 <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Select crypto
+                                                                </svg> </span>Select currency
                                                         </h6>
                                                     </li>
                                                     <li className="done">
@@ -41,19 +39,11 @@ export default function SellCryptoDetails() {
                                                             <span>
                                                                 <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Enter Amount
-                                                        </h6>
-                                                    </li>
-                                                    <li className="done">
-                                                        <h6>
-                                                            <span>
-                                                                <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Payment Details
+                                                                </svg> </span>Confirm Payment
                                                         </h6>
                                                     </li>
                                                     <li className="active">
-                                                        <h6><span />Payment Details</h6>
+                                                        <h6><span />Details</h6>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -145,7 +135,7 @@ export default function SellCryptoDetails() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="content-inner" style={{ display: `${flatTabs === 2 ? "block" : "none"}` }}>
+                                        <div className="content-inner buy-crypto__main" style={{ display: `${flatTabs === 2 ? "block" : "none"}` }}>
                                             <div className="top">
                                                 <ul className="top-list">
                                                     <li className="done">
@@ -153,7 +143,7 @@ export default function SellCryptoDetails() {
                                                             <span>
                                                                 <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Select crypto
+                                                                </svg> </span>Select currency
                                                         </h6>
                                                     </li>
                                                     <li className="done">
@@ -161,14 +151,11 @@ export default function SellCryptoDetails() {
                                                             <span>
                                                                 <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Enter Amount
+                                                                </svg> </span>Confirm Payment
                                                         </h6>
                                                     </li>
                                                     <li className="active">
-                                                        <h6><span />Payment Details</h6>
-                                                    </li>
-                                                    <li>
-                                                        <h6><span />Payment Details</h6>
+                                                        <h6><span />Details</h6>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -260,7 +247,7 @@ export default function SellCryptoDetails() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="content-inner" style={{ display: `${flatTabs === 3 ? "block" : "none"}` }}>
+                                        <div className="content-inner buy-crypto__main" style={{ display: `${flatTabs === 3 ? "block" : "none"}` }}>
                                             <div className="top">
                                                 <ul className="top-list">
                                                     <li className="done">
@@ -268,7 +255,7 @@ export default function SellCryptoDetails() {
                                                             <span>
                                                                 <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Select crypto
+                                                                </svg> </span>Select currency
                                                         </h6>
                                                     </li>
                                                     <li className="done">
@@ -276,14 +263,11 @@ export default function SellCryptoDetails() {
                                                             <span>
                                                                 <svg width={10} height={8} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M1 3.99967L3.66667 6.66634L9 1.33301" stroke="white" strokeWidth={2} strokeMiterlimit={10} strokeLinecap="round" strokeLinejoin="round" />
-                                                                </svg> </span>Enter Amount
+                                                                </svg> </span>Confirm Payment
                                                         </h6>
                                                     </li>
                                                     <li className="active">
-                                                        <h6><span />Payment Details</h6>
-                                                    </li>
-                                                    <li>
-                                                        <h6><span />Payment Details</h6>
+                                                        <h6><span />Details</h6>
                                                     </li>
                                                 </ul>
                                             </div>

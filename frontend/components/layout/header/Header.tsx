@@ -6,7 +6,7 @@ import MobileMenu from '../MobileMenu';
 const ThemeSwitch = dynamic(() => import('@/components/elements/ThemeSwitch'), {
     ssr: false,
 });
-export default function Header({ isMobileMenu, handleMobileMenu }) {
+export default function Header({ isMobileMenu, handleMobileMenu }: { isMobileMenu: boolean, handleMobileMenu: () => void }) {
     return (
         <>
 

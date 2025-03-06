@@ -6,7 +6,7 @@ import Breadcrumb from './Breadcrumb';
 import Footer from './footer/Footer';
 import Header from "./header/Header";
 
-export default function Layout({ breadcrumbTitle, children }) {
+export default function Layout({ breadcrumbTitle, children }: { breadcrumbTitle?: string, children?: any }) {
     const [isMobileMenu, setMobileMenu] = useState(false);
     const handleMobileMenu = () => setMobileMenu(!isMobileMenu);
 
