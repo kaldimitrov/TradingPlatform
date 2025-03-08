@@ -1,26 +1,58 @@
+'use client';
+
 import Link from 'next/link';
 import ChatList from '../chart/ChatList';
 import IconStar from '../elements/IconStar';
 import { ChartColor } from '../../enums/chart-color.enum';
 import { CurrencyPrice } from '@/models/currency-price.mode';
+import { Client } from '@stomp/stompjs';
+import { useState, useEffect } from 'react';
+import SockJS from 'sockjs-client';
+import { environment } from '@/environment/environment';
 
 export default function Coinlist() {
-    const currencyData: CurrencyPrice[] = [
-        {
-          currency: 'Bitcoin',
-          symbol: 'BTC',
-          price: 56623.54,
-          changePct: 1.45,
-          volume: 880423640582,
-        },
-        {
-          currency: 'Ethereum',
-          symbol: 'ETH',
-          price: 1800.23,
-          changePct: -5.12,
-          volume: 380423640582,
-        },
-      ];
+      const [cryptoPrices, setCryptoPrices] = useState([] as CurrencyPrice[]);
+      let currentData: CurrencyPrice[] = [];
+
+      useEffect(() => {
+        const socket = new SockJS(environment.wsUrl);
+        const stompClient = new Client({
+          webSocketFactory: () => socket,
+          reconnectDelay: 5000,
+        });
+    
+        stompClient.onConnect = () => {
+          console.log('Connected to WebSocket');
+          stompClient.subscribe('/topic/market-update', (message) => {
+            const receivedPrices = JSON.parse(message.body);
+            currentData = receivedPrices;
+            setCryptoPrices(receivedPrices);
+          });
+
+          stompClient.subscribe('/topic/market-currency-update', (message) => {
+            const receivedPrices: CurrencyPrice[] = JSON.parse(message.body);
+            currentData = currentData.map((price) => {
+              const updatedPrice = receivedPrices.find((p) => p.symbol === price.symbol);
+              if (!updatedPrice) {
+                return price;
+              }
+
+              return {...price, price: updatedPrice.price, changePct: updatedPrice.changePct, volume: updatedPrice.volume};
+            });
+            setCryptoPrices(currentData);
+          });
+
+          stompClient.publish({destination: "/app/market-update"});
+        };
+  
+        stompClient.activate();
+    
+        return () => {
+          if (stompClient) {
+            stompClient.deactivate();
+          }
+        };
+      }, []);
       
   return (
     <section className="coin-list">
@@ -48,7 +80,7 @@ export default function Coinlist() {
                         </tr>
                       </thead>
                       <tbody>
-                        {currencyData.map((currency, index) => {
+                        {cryptoPrices.map((currency, index) => {
                           const changeClass = currency.changePct < 0 ? 'down' : 'up';
                           const chartColor = currency.changePct < 0 ? ChartColor.RED : ChartColor.GREEN;
 
@@ -65,10 +97,10 @@ export default function Coinlist() {
                                       src={require(`cryptocurrency-icons/svg/color/${currency.symbol.toLowerCase()}.svg`).default.src}
                                       height={24}
                                       width={24}
-                                      alt={`${currency.currency} logo`}
+                                      alt={`${currency.name} logo`}
                                     />
                                   </span>
-                                  <span>{currency.currency}</span>
+                                  <span>{currency.name}</span>
                                   <span className="unit">{currency.symbol.toUpperCase()}</span>
                                 </Link>
                               </td>

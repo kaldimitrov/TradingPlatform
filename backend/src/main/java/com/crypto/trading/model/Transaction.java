@@ -23,14 +23,15 @@ public class Transaction {
     @JoinColumn(name = "user_id", nullable = false)
     private Account user;
 
-    @Column(name = "crypto_symbol", nullable = false)
-    private String cryptoSymbol;
+    @ManyToOne
+    @JoinColumn(name = "currency", nullable = false)
+    private CryptoPrice currency;
 
     @Column(name = "quantity", nullable = false, precision = 20, scale = 8)
     private BigDecimal quantity;
 
-    @Column(name = "price_at_transaction", nullable = false, precision = 20, scale = 8)
-    private BigDecimal priceAtTransaction;
+    @Column(name = "amount", nullable = false, precision = 20, scale = 8)
+    private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "transaction_type", nullable = false)

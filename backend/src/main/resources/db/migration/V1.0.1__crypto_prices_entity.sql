@@ -1,10 +1,9 @@
-CREATE TABLE IF NOT EXISTS accounts
+CREATE TABLE IF NOT EXISTS crypto_prices
 (
-    id              UUID            NOT NULL,
-    first_name      TEXT            NOT NULL,
-    last_name       TEXT            NOT NULL,
-    email           TEXT            NOT NULL,
-    hashed_password TEXT            NOT NULL,
-    balance         NUMERIC(38, 18) NOT NULL,
-    CONSTRAINT pk_accounts PRIMARY KEY (id)
+    symbol     TEXT            NOT NULL,
+    name       TEXT,
+    price      NUMERIC(38, 18) NOT NULL,
+    change_pct NUMERIC(38, 18) NOT NULL,
+    volume     NUMERIC(38, 18) NOT NULL,
+    CONSTRAINT pk_crypto_prices PRIMARY KEY (symbol)
 );

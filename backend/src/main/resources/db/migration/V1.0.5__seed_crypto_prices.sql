@@ -1,14 +1,21 @@
-ALTER TABLE IF EXISTS accounts
-    ADD CONSTRAINT uc_accounts_email UNIQUE (email);
-
-ALTER TABLE IF EXISTS holdings
-    ADD CONSTRAINT FK_HOLDINGS_ON_CURRENCY FOREIGN KEY (currency) REFERENCES crypto_prices (symbol);
-
-ALTER TABLE IF EXISTS holdings
-    ADD CONSTRAINT FK_HOLDINGS_ON_USER FOREIGN KEY (user_id) REFERENCES accounts (id);
-
-ALTER TABLE IF EXISTS transactions
-    ADD CONSTRAINT FK_TRANSACTIONS_ON_CURRENCY FOREIGN KEY (currency) REFERENCES crypto_prices (symbol);
-
-ALTER TABLE IF EXISTS transactions
-    ADD CONSTRAINT FK_TRANSACTIONS_ON_USER FOREIGN KEY (user_id) REFERENCES accounts (id);
+INSERT INTO crypto_prices (symbol, name, price, change_pct, volume)
+VALUES ('BTC', 'Bitcoin', 0, 0, 0),
+       ('ETH', 'Ethereum', 0, 0, 0),
+       ('USDT', 'Tether', 0, 0, 0),
+       ('XRP', 'Ripple', 0, 0, 0),
+       ('BNB', 'Binance Coin', 0, 0, 0),
+       ('SOL', 'Solana', 0, 0, 0),
+       ('USDC', 'USD Coin', 0, 0, 0),
+       ('ADA', 'Cardano', 0, 0, 0),
+       ('DOGE', 'Dogecoin', 0, 0, 0),
+       ('TRX', 'Tron', 0, 0, 0),
+       ('UNI', 'Uniswap', 0, 0, 0),
+       ('WBTC', 'Wrapped Bitcoin', 0, 0, 0),
+       ('LINK', 'Chainlink', 0, 0, 0),
+       ('ETC', 'Ethereum Classic', 0, 0, 0),
+       ('LEO', 'LEO Token', 0, 0, 0),
+       ('AVAX', 'Avalanche', 0, 0, 0),
+       ('XLM', 'Stellar', 0, 0, 0),
+       ('DOT', 'Polkadot', 0, 0, 0),
+       ('LTC', 'Litecoin', 0, 0, 0),
+       ('BCH', 'Bitcoin Cash', 0, 0, 0);

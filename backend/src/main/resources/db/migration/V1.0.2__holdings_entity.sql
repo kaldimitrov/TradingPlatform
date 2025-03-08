@@ -1,9 +1,9 @@
-CREATE TABLE IF NOT EXISTS crypto_prices
+CREATE TABLE IF NOT EXISTS holdings
 (
-    symbol     TEXT   NOT NULL,
-    name       TEXT   NOT NULL,
-    price      NUMERIC(38, 18) NOT NULL,
-    change_pct NUMERIC(38, 18) NOT NULL,
-    volume     NUMERIC(38, 18) NOT NULL,
-    CONSTRAINT pk_crypto_prices PRIMARY KEY (symbol)
+    id                 UUID            NOT NULL,
+    user_id            UUID            NOT NULL,
+    currency           TEXT            NOT NULL,
+    quantity           NUMERIC(38, 18) NOT NULL,
+    avg_purchase_price NUMERIC(38, 18) NOT NULL,
+    CONSTRAINT pk_holdings PRIMARY KEY (id)
 );

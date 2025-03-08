@@ -1,52 +1,48 @@
 'use client';
 import Layout from "@/components/layout/Layout";
 import { useState } from "react";
-export default function SellCryptoAmount() {
+export default function BuyCryptoSelect() {
     const [flatTabs, setFlatTabs] = useState(1);
     const handleFlatTabs = (index: number) => {
         setFlatTabs(index);
     };
-
-
     return (
         <>
 
-            <Layout breadcrumbTitle="Sell Crypto">
+            <Layout breadcrumbTitle="Exchange">
                 <div>
-                    <section className="wallet sell amount buy-crypto flat-tabs">
+                    <section className="buy-crypto flat-tabs">
                         <div className="container">
                             <div className="row">
-                                <div className="col-xl-3 col-md-12">
+                                <div className="col-md-3">
                                     <ul className="menu-tab">
                                         <li className={flatTabs === 1 ? "active" : ""} onClick={() => handleFlatTabs(1)}><h6 className="fs-16">Overview</h6></li>
                                         <li className={flatTabs === 2 ? "active" : ""} onClick={() => handleFlatTabs(2)}><h6 className="fs-16">Buy Crypto</h6></li>
                                         <li className={flatTabs === 3 ? "active" : ""} onClick={() => handleFlatTabs(3)}><h6 className="fs-16">Sell Crypto</h6></li>
                                     </ul>
                                 </div>
-                                <div className="col-xl-9 col-md-12">
+                                <div className="col-md-9">
                                     <div className="content-tab">
-                                        <div className="content-inner" style={{ display: `${flatTabs === 1 ? "block" : "none"}` }}>
+                                        <div className="content-inner buy-crypto__main" style={{ display: `${flatTabs === 1 ? "block" : "none"}` }}>
                                             <div className="top">
                                                 <ul className="top-list">
                                                     <li className="active">
-                                                        <h6><span />Select crypto</h6>
+                                                        <h6><span />Select currency</h6>
                                                     </li>
-                                                    <li className="active">
+                                                    <li>
                                                         <h6><span />Confirm Payment</h6>
                                                     </li>
                                                     <li>
-                                                        <h6><span />Payment Details</h6>
-                                                    </li>
-                                                    <li>
-                                                        <h6><span />Payment Details</h6>
+                                                        <h6><span />Complete Payment</h6>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div className="main">
-                                                <h6>Confirm Information</h6>
-                                                <form action="sell-crypto-confirm" className="form">
+                                                <h6>Select Currency</h6>
+                                                <p>Reference Price: 1,450,939,280.43 VND/BTC</p>
+                                                <form action="buy-crypto-confirm" className="form">
                                                     <div className="form-field">
-                                                        <label>Sell</label>
+                                                        <label>Pay</label>
                                                         <input type="number" className="dollar" placeholder="US$" />
                                                     </div>
                                                     <button className="btn-convert" >
@@ -55,8 +51,8 @@ export default function SellCryptoAmount() {
                                                             <path d="M17.1467 8.98828C16.9503 8.98828 16.7619 9.08193 16.623 9.24862C16.4841 9.41531 16.406 9.64139 16.406 9.87713V12.5437C16.406 12.7794 16.328 13.0055 16.1891 13.1722C16.0502 13.3389 15.8618 13.4325 15.6653 13.4325H2.63976L3.59746 12.2832C3.73238 12.1156 3.80704 11.8911 3.80535 11.658C3.80366 11.425 3.72576 11.202 3.58844 11.0372C3.45111 10.8724 3.26534 10.779 3.07113 10.7769C2.87693 10.7749 2.68983 10.8645 2.55014 11.0264L0.328098 13.693C0.191902 13.8613 0.115723 14.0867 0.115723 14.3214C0.115723 14.556 0.191902 14.7814 0.328098 14.9498L2.55014 17.6164C2.61846 17.7012 2.70019 17.769 2.79056 17.8155C2.88092 17.8621 2.97812 17.8866 3.07646 17.8877C3.17481 17.8887 3.27234 17.8662 3.36337 17.8215C3.4544 17.7768 3.53709 17.7108 3.60664 17.6274C3.67618 17.5439 3.73118 17.4447 3.76842 17.3354C3.80567 17.2262 3.82441 17.1092 3.82355 16.9911C3.8227 16.8731 3.80226 16.7565 3.76345 16.648C3.72463 16.5396 3.6682 16.4415 3.59746 16.3595L2.63976 15.2102H15.6653C16.2547 15.2102 16.8199 14.9293 17.2366 14.4292C17.6533 13.9291 17.8874 13.2509 17.8874 12.5437V9.87713C17.8874 9.64139 17.8094 9.41531 17.6704 9.24862C17.5315 9.08193 17.3431 8.98828 17.1467 8.98828Z" fill="white" />
                                                         </svg>
                                                     </button>
-                                                    <div className="form-field s1">
-                                                        <label>Get</label>
+                                                    <div className="form-field">
+                                                        <label>Receive</label>
                                                         <input type="number" className="bitcoin" placeholder="BTC" />
                                                     </div>
                                                     <button type="submit" className="btn-action">Continue</button>
@@ -64,17 +60,14 @@ export default function SellCryptoAmount() {
                                                 <div className="button" />
                                             </div>
                                         </div>
-                                        <div className="content-inner" style={{ display: `${flatTabs === 2 ? "block" : "none"}` }}>
+                                        <div className="content-inner buy-crypto__main" style={{ display: `${flatTabs === 2 ? "block" : "none"}` }}>
                                             <div className="top">
                                                 <ul className="top-list">
                                                     <li className="active">
-                                                        <h6><span />Select crypto</h6>
-                                                    </li>
-                                                    <li className="active">
-                                                        <h6><span />Confirm Payment</h6>
+                                                        <h6><span />Select currency</h6>
                                                     </li>
                                                     <li>
-                                                        <h6><span />Payment Details</h6>
+                                                        <h6><span />Important Notes</h6>
                                                     </li>
                                                     <li>
                                                         <h6><span />Payment Details</h6>
@@ -82,10 +75,11 @@ export default function SellCryptoAmount() {
                                                 </ul>
                                             </div>
                                             <div className="main">
-                                                <h6>Confirm Information</h6>
-                                                <form action="sell-crypto-confirm" className="form">
+                                                <h6>Select Currency</h6>
+                                                <p>Reference Price: 1,450,939,280.43 VND/BTC</p>
+                                                <form action="buy-crypto-confirm" className="form">
                                                     <div className="form-field">
-                                                        <label>Sell</label>
+                                                        <label>Pay</label>
                                                         <input type="number" className="dollar" placeholder="US$" />
                                                     </div>
                                                     <button className="btn-convert" >
@@ -94,8 +88,8 @@ export default function SellCryptoAmount() {
                                                             <path d="M17.1467 8.98828C16.9503 8.98828 16.7619 9.08193 16.623 9.24862C16.4841 9.41531 16.406 9.64139 16.406 9.87713V12.5437C16.406 12.7794 16.328 13.0055 16.1891 13.1722C16.0502 13.3389 15.8618 13.4325 15.6653 13.4325H2.63976L3.59746 12.2832C3.73238 12.1156 3.80704 11.8911 3.80535 11.658C3.80366 11.425 3.72576 11.202 3.58844 11.0372C3.45111 10.8724 3.26534 10.779 3.07113 10.7769C2.87693 10.7749 2.68983 10.8645 2.55014 11.0264L0.328098 13.693C0.191902 13.8613 0.115723 14.0867 0.115723 14.3214C0.115723 14.556 0.191902 14.7814 0.328098 14.9498L2.55014 17.6164C2.61846 17.7012 2.70019 17.769 2.79056 17.8155C2.88092 17.8621 2.97812 17.8866 3.07646 17.8877C3.17481 17.8887 3.27234 17.8662 3.36337 17.8215C3.4544 17.7768 3.53709 17.7108 3.60664 17.6274C3.67618 17.5439 3.73118 17.4447 3.76842 17.3354C3.80567 17.2262 3.82441 17.1092 3.82355 16.9911C3.8227 16.8731 3.80226 16.7565 3.76345 16.648C3.72463 16.5396 3.6682 16.4415 3.59746 16.3595L2.63976 15.2102H15.6653C16.2547 15.2102 16.8199 14.9293 17.2366 14.4292C17.6533 13.9291 17.8874 13.2509 17.8874 12.5437V9.87713C17.8874 9.64139 17.8094 9.41531 17.6704 9.24862C17.5315 9.08193 17.3431 8.98828 17.1467 8.98828Z" fill="white" />
                                                         </svg>
                                                     </button>
-                                                    <div className="form-field s1">
-                                                        <label>Get</label>
+                                                    <div className="form-field">
+                                                        <label>Receive</label>
                                                         <input type="number" className="bitcoin" placeholder="BTC" />
                                                     </div>
                                                     <button type="submit" className="btn-action">Continue</button>
@@ -103,17 +97,14 @@ export default function SellCryptoAmount() {
                                                 <div className="button" />
                                             </div>
                                         </div>
-                                        <div className="content-inner" style={{ display: `${flatTabs === 3 ? "block" : "none"}` }}>
+                                        <div className="content-inner buy-crypto__main" style={{ display: `${flatTabs === 3 ? "block" : "none"}` }}>
                                             <div className="top">
                                                 <ul className="top-list">
                                                     <li className="active">
-                                                        <h6><span />Select crypto</h6>
-                                                    </li>
-                                                    <li className="active">
-                                                        <h6><span />Confirm Payment</h6>
+                                                        <h6><span />Select currency</h6>
                                                     </li>
                                                     <li>
-                                                        <h6><span />Payment Details</h6>
+                                                        <h6><span />Important Notes</h6>
                                                     </li>
                                                     <li>
                                                         <h6><span />Payment Details</h6>
@@ -121,10 +112,11 @@ export default function SellCryptoAmount() {
                                                 </ul>
                                             </div>
                                             <div className="main">
-                                                <h6>Confirm Information</h6>
-                                                <form action="sell-crypto-confirm" className="form">
+                                                <h6>Select Currency</h6>
+                                                <p>Reference Price: 1,450,939,280.43 VND/BTC</p>
+                                                <form action="buy-crypto-confirm" className="form">
                                                     <div className="form-field">
-                                                        <label>Sell</label>
+                                                        <label>Pay</label>
                                                         <input type="number" className="dollar" placeholder="US$" />
                                                     </div>
                                                     <button className="btn-convert" >
@@ -133,8 +125,8 @@ export default function SellCryptoAmount() {
                                                             <path d="M17.1467 8.98828C16.9503 8.98828 16.7619 9.08193 16.623 9.24862C16.4841 9.41531 16.406 9.64139 16.406 9.87713V12.5437C16.406 12.7794 16.328 13.0055 16.1891 13.1722C16.0502 13.3389 15.8618 13.4325 15.6653 13.4325H2.63976L3.59746 12.2832C3.73238 12.1156 3.80704 11.8911 3.80535 11.658C3.80366 11.425 3.72576 11.202 3.58844 11.0372C3.45111 10.8724 3.26534 10.779 3.07113 10.7769C2.87693 10.7749 2.68983 10.8645 2.55014 11.0264L0.328098 13.693C0.191902 13.8613 0.115723 14.0867 0.115723 14.3214C0.115723 14.556 0.191902 14.7814 0.328098 14.9498L2.55014 17.6164C2.61846 17.7012 2.70019 17.769 2.79056 17.8155C2.88092 17.8621 2.97812 17.8866 3.07646 17.8877C3.17481 17.8887 3.27234 17.8662 3.36337 17.8215C3.4544 17.7768 3.53709 17.7108 3.60664 17.6274C3.67618 17.5439 3.73118 17.4447 3.76842 17.3354C3.80567 17.2262 3.82441 17.1092 3.82355 16.9911C3.8227 16.8731 3.80226 16.7565 3.76345 16.648C3.72463 16.5396 3.6682 16.4415 3.59746 16.3595L2.63976 15.2102H15.6653C16.2547 15.2102 16.8199 14.9293 17.2366 14.4292C17.6533 13.9291 17.8874 13.2509 17.8874 12.5437V9.87713C17.8874 9.64139 17.8094 9.41531 17.6704 9.24862C17.5315 9.08193 17.3431 8.98828 17.1467 8.98828Z" fill="white" />
                                                         </svg>
                                                     </button>
-                                                    <div className="form-field s1">
-                                                        <label>Get</label>
+                                                    <div className="form-field">
+                                                        <label>Receive</label>
                                                         <input type="number" className="bitcoin" placeholder="BTC" />
                                                     </div>
                                                     <button type="submit" className="btn-action">Continue</button>
