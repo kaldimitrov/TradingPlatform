@@ -31,8 +31,4 @@ public class Account {
 
     @Column(name = "balance", nullable = false, precision = 20, scale = 8)
     private BigDecimal balance;
-
-    public void resetBalance(BigDecimal initialBalance) {
-        this.balance = initialBalance;
-    }
 }

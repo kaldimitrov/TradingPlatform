@@ -1,6 +1,6 @@
 'use client';
 import Chart from 'react-apexcharts';
-import { ChartColor } from '../enums/chart-color.enum';
+import { ChartColor } from '../../enums/chart-color.enum';
 
 export default function ChartArea({ color }: { color: ChartColor }) {
     const options: ApexCharts.ApexOptions | undefined = {

@@ -1,9 +1,33 @@
 'use client';
 import Layout from "@/components/layout/Layout";
+import { ToastMessages } from "@/enums/toast-messages.enum";
+import { Account } from "@/models/account.model";
+import { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
+
 export default function UserProfile() {
+    const [account, setAccount] = useState<Account | null>(null);
+
+    useEffect(() => {
+        const fetchAccount = async () => {
+            try {
+                // todo connect to the backend
+                const response = await fetch('/api/account');
+                const data: Account = await response.json();
+                setAccount(data);
+            } catch (error) {
+                if (toast.isActive(ToastMessages.ERROR_FETCHING_ACCOUNT)) {
+                    return;
+                }
+                toast.error(ToastMessages.ERROR_FETCHING_ACCOUNT, { toastId: ToastMessages.ERROR_FETCHING_ACCOUNT });
+            }
+        };
+
+        fetchAccount();
+    }, []);
+
     return (
         <>
-
             <Layout breadcrumbTitle="User Profile">
                 <div>
                     <section className="user-profile flat-tabs">
@@ -14,8 +38,8 @@ export default function UserProfile() {
                                         <div className="avt">
                                             <img id="avatar" src="/assets/images/avatar.png" alt="no file" />
                                         </div>
-                                        <h6 className="name">Peterson kennady</h6>
-                                        <p>petersonkenn@demo.com</p>
+                                        <h6 className="name">{account?.firstName} {account?.lastName}</h6>
+                                        <p>{account?.email}</p>
                                     </div>
                                 </div>
                                 <div className="col-xl-9 col-md-12">
@@ -23,13 +47,31 @@ export default function UserProfile() {
                                         <div className="content-inner profile" style={{ display: 'block' }}>
                                             <form >
                                                 <h4>User Profile</h4>
-                                                <h6>Infomation</h6>
+                                                <h6>Information</h6>
                                                 <div className="form-group d-flex s1">
-                                                    <input type="text" className="form-control" defaultValue="John" placeholder="First Name" />
-                                                    <input type="text" className="form-control" defaultValue="Smith" placeholder="Last Name" />
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={account?.firstName || ''}
+                                                        placeholder="First Name"
+                                                        readOnly
+                                                    />
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+                                                        value={account?.lastName || ''}
+                                                        placeholder="Last Name"
+                                                        readOnly
+                                                    />
                                                 </div>
                                                 <div className="form-group d-flex">
-                                                    <input type="email" className="form-control" id="exampleInputEmail1" defaultValue="Tonynguyen@demo.com" placeholder="Email" />
+                                                    <input
+                                                        type="email"
+                                                        className="form-control"
+                                                        value={account?.email || ''}
+                                                        placeholder="Email"
+                                                        readOnly
+                                                    />
                                                 </div>
                                                 <h6 className="two">Features</h6>
                                                 <div className="bt d-flex">
@@ -79,7 +121,6 @@ export default function UserProfile() {
                         </div>
                     </section>
                 </div>
-
             </Layout>
         </>
     );

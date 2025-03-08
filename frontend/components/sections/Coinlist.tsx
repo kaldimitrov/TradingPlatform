@@ -3,7 +3,7 @@
 import Link from "next/link";
 import ChatList from "../chart/ChatList";
 import IconStar from "../elements/IconStar";
-import { ChartColor } from "../enums/chart-color.enum";
+import { ChartColor } from "../../enums/chart-color.enum";
 export default function Coinlist() {
     return (
         <>
