@@ -21,8 +21,9 @@ public class Holding {
     @JoinColumn(name = "user_id", nullable = false)
     private Account user;
 
-    @Column(name = "crypto_symbol", nullable = false)
-    private String cryptoSymbol;
+    @ManyToOne
+    @JoinColumn(name = "currency", nullable = false)
+    private CryptoPrice currency;
 
     @Column(name = "quantity", nullable = false, precision = 20, scale = 8)
     private BigDecimal quantity;

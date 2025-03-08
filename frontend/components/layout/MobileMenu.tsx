@@ -26,41 +26,20 @@ export default function MobileMenu({ isMobileMenu }: { isMobileMenu: boolean }) 
                     <li className={`menu-item menu-item-has-children`}>
                         <Link href="/">Home </Link>
                     </li>
-                    <li className={`menu-item menu-item-has-children ${checkParentActive(["/buy-crypto-select",
+                    <li className={`menu-item menu-item-has-children ${checkParentActive(["/exchange",
                         "/buy-crypto-confirm",
                         "/buy-crypto-details",])}`}>
                         <Link href="#">Buy Crypto</Link>
                         <span className="arrow" onClick={() => handleClick(2)} />
                         <ul className="sub-menu" style={{ display: `${isActive == 2 ? "block" : "none"}` }}>
-                            <li className={`menu-item ${checkCurrentMenuItem("/buy-crypto-select")}`}>
-                                <Link href="/buy-crypto-select">Buy Crypto Select</Link>
+                            <li className={`menu-item ${checkCurrentMenuItem("/exchange")}`}>
+                                <Link href="/exchange">Buy Crypto Select</Link>
                             </li>
                             <li className={`menu-item ${checkCurrentMenuItem("/buy-crypto-confirm")}`}>
                                 <Link href="/buy-crypto-confirm">Buy Crypto Confirm</Link>
                             </li>
                             <li className={`menu-item ${checkCurrentMenuItem("/buy-crypto-details")}`}>
                                 <Link href="/buy-crypto-details">Buy Crypto Details</Link>
-                            </li>
-                        </ul>
-                    </li>
-                    <li className={`menu-item menu-item-has-children ${checkParentActive(["/sell-crypto",
-                        "/sell-crypto-amount",
-                        "/sell-crypto-confirm",
-                        "/sell-crypto-details",])}`}>
-                        <Link href="#">Sell Crypto</Link>
-                        <span className="arrow" onClick={() => handleClick(3)} />
-                        <ul className="sub-menu" style={{ display: `${isActive == 3 ? "block" : "none"}` }}>
-                            <li className={`menu-item ${checkCurrentMenuItem("/sell-crypto")}`}>
-                                <Link href="/sell-crypto">Sell Select</Link>
-                            </li>
-                            <li className={`menu-item ${checkCurrentMenuItem("/sell-crypto-amount")}`}>
-                                <Link href="/sell-crypto-amount">Sell Crypto Amount</Link>
-                            </li>
-                            <li className={`menu-item ${checkCurrentMenuItem("/sell-crypto-confirm")}`}>
-                                <Link href="/sell-crypto-confirm">Sell Crypto Confirm</Link>
-                            </li>
-                            <li className={`menu-item ${checkCurrentMenuItem("/sell-crypto-details")}`}>
-                                <Link href="/sell-crypto-details">Sell Crypto Details</Link>
                             </li>
                         </ul>
                     </li>

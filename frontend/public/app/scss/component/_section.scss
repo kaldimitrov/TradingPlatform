@@ -258,15 +258,7 @@
                   font-weight: 700;
                   font-size: 18px;
                 }
-                &.up {
-                  font-weight: 400;
-                  color: #58bd7d;
-                }
-                &.down {
-                  font-weight: 400;
-                  color: #d33535;
-                }
-
+                
                 a.btn {
                   display: inline-block;
                   padding: 5px 10px;
@@ -299,6 +291,16 @@
       }
     }
   }
+}
+
+.up {
+  font-weight: 400;
+  color: #58bd7d;
+}
+
+.down {
+  font-weight: 400;
+  color: #d33535;
 }
 
 .home-2 {
@@ -2498,6 +2500,7 @@
 
       &.info {
         margin-top: 56px;
+        margin-bottom: 24px;
         .desc {
           text-transform: capitalize;
         }
@@ -2940,7 +2943,7 @@
     border-radius: 20px;
     overflow: hidden;
     margin-top: 30px;
-    padding: 23px 20px 57px 29px;
+    padding: 23px 20px 23px 29px;
     @include mobile {
       overflow: auto;
     }
@@ -4269,4 +4272,19 @@
 
 .is_dark .buy-crypto .buy-crypto__main .main.details .status {
   background: #18191d;
+}
+
+.v-align-middle {
+  vertical-align: middle;
+}
+
+.align-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ml-8px {
+  margin-left: 8px;
 }
