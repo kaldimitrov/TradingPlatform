@@ -3,4 +3,5 @@ export interface CurrencyPrice {
   symbol: string;
   price: number;
   changePct: number;
+  volume: number;
 }
