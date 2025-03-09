@@ -2,6 +2,7 @@
 import Layout from "@/components/layout/Layout";
 import { ToastMessages } from "@/enums/toast-messages.enum";
 import { Account } from "@/models/account.model";
+import { getUser } from "@/services/requests/user-requests";
 import { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 
@@ -11,10 +12,7 @@ export default function UserProfile() {
     useEffect(() => {
         const fetchAccount = async () => {
             try {
-                // todo connect to the backend
-                const response = await fetch('/api/account');
-                const data: Account = await response.json();
-                setAccount(data);
+                setAccount(await getUser());
             } catch (error) {
                 if (toast.isActive(ToastMessages.ERROR_FETCHING_ACCOUNT)) {
                     return;
@@ -38,7 +36,7 @@ export default function UserProfile() {
                                         <div className="avt">
                                             <img id="avatar" src="/assets/images/avatar.png" alt="no file" />
                                         </div>
-                                        <h6 className="name">{account?.firstName} {account?.lastName}</h6>
+                                        <h6 className="name">{account?.firstName} {account?.lastName} (${account?.balance.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})})</h6>
                                         <p>{account?.email}</p>
                                     </div>
                                 </div>
@@ -54,14 +52,12 @@ export default function UserProfile() {
                                                         className="form-control"
                                                         value={account?.firstName || ''}
                                                         placeholder="First Name"
-                                                        readOnly
                                                     />
                                                     <input
                                                         type="text"
                                                         className="form-control"
                                                         value={account?.lastName || ''}
                                                         placeholder="Last Name"
-                                                        readOnly
                                                     />
                                                 </div>
                                                 <div className="form-group d-flex">
@@ -110,9 +106,6 @@ export default function UserProfile() {
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <button type="submit" className="btn-action">
-                                                    Update Profile
-                                                </button>
                                             </form>
                                         </div>
                                     </div>

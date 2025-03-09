@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import Link from "next/link";
 import MainMenu from '../Menu';
 import MobileMenu from '../MobileMenu';
+import { reset } from '@/services/requests/user-requests';
+
 const ThemeSwitch = dynamic(() => import('@/components/elements/ThemeSwitch'), {
     ssr: false,
 });
@@ -39,7 +41,7 @@ export default function Header({ isMobileMenu, handleMobileMenu }: { isMobileMen
                                         <div className={`mobile-button d-block ${isMobileMenu ? "active" : ""}`} onClick={handleMobileMenu}><span /></div>{/* /.mobile-button */}
                                     </div>
                                     <div className="wallet">
-                                        <Link href="/wallet"> Reset </Link>
+                                        <Link href="/user-profile" onClick={reset}> Reset </Link>
                                     </div>
                                     <Menu as="div" className="dropdown user">
                                         <Menu.Button className="btn dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

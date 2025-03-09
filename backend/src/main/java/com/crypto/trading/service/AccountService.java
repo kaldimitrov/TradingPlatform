@@ -6,6 +6,7 @@ import com.crypto.trading.exception.TradingException;
 import com.crypto.trading.model.Account;
 import com.crypto.trading.repository.AccountRepository;
 import com.crypto.trading.security.AccountDetails;
+import jakarta.transaction.Transactional;
 import lombok.SneakyThrows;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,10 +20,12 @@ import java.math.BigDecimal;
 public class AccountService implements UserDetailsService {
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private final HoldingService holdingService;
 
-    public AccountService(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+    public AccountService(AccountRepository accountRepository, PasswordEncoder passwordEncoder, HoldingService holdingService) {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
+        this.holdingService = holdingService;
     }
 
     public Account registerUser(RegisterRequest data) {
@@ -38,6 +41,20 @@ public class AccountService implements UserDetailsService {
                 .build();
 
         return accountRepository.save(account);
+    }
+
+    public Account findByEmail(String email) {
+        return accountRepository.findByEmail(email)
+                .orElseThrow(() -> new TradingException(ErrorCode.INVALID_INPUT, "User not found with email: " + email));
+    }
+
+    @Transactional
+    public void resetUser(String email) {
+        Account account = accountRepository.findByEmail(email)
+                .orElseThrow(() -> new TradingException(ErrorCode.INVALID_INPUT, "User not found with email: " + email));
+        account.setBalance(BigDecimal.valueOf(10_000));
+        accountRepository.save(account);
+        holdingService.deleteByAccount(account);
     }
 
     @Override
