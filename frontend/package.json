@@ -7,7 +7,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "sass": "sass --watch public/app/scss/app.scss:public/app/dist/app.css"
+        "sass": "sass --watch public/app/scss/app.scss:public/app/dist/app.css",
+        "sass:build": "sass public/app/scss/app.scss public/app/dist/app.css"
     },
     "dependencies": {
         "@headlessui/react": "^1.7.18",

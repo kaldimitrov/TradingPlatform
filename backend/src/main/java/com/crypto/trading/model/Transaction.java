@@ -27,10 +27,10 @@ public class Transaction {
     @JoinColumn(name = "currency", nullable = false)
     private CryptoPrice currency;
 
-    @Column(name = "quantity", nullable = false, precision = 20, scale = 8)
+    @Column(name = "quantity", nullable = false, precision = 38, scale = 19)
     private BigDecimal quantity;
 
-    @Column(name = "amount", nullable = false, precision = 20, scale = 8)
+    @Column(name = "amount", nullable = false, precision = 38, scale = 19)
     private BigDecimal amount;
 
     @Enumerated(EnumType.STRING)
@@ -39,4 +39,7 @@ public class Transaction {
 
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp;
+
+    @Column(name = "profit", nullable = true, precision = 38, scale = 19)
+    private BigDecimal profit;
 }

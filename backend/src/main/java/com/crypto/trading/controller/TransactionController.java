@@ -1,6 +1,6 @@
 package com.crypto.trading.controller;
 
-import com.crypto.trading.controller.dto.AccountResponse;
+import com.crypto.trading.controller.dto.ExchangeCryptoDto;
 import com.crypto.trading.model.Account;
 import com.crypto.trading.model.Transaction;
 import com.crypto.trading.security.AccountDetails;
@@ -30,6 +30,22 @@ public class TransactionController {
         AccountDetails account = (AccountDetails) authentication.getPrincipal();
 
         return transactionService.findByAccount(accountService.findByEmail(account.getUsername()));
+    }
+
+    @PostMapping("/buy")
+    public Transaction buyCrypto(@RequestBody ExchangeCryptoDto data) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AccountDetails account = (AccountDetails) authentication.getPrincipal();
+
+        return transactionService.buyCrypto(data, account.getUsername());
+    }
+
+    @PostMapping("/sell")
+    public Transaction sellCrypto(@RequestBody ExchangeCryptoDto data) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AccountDetails account = (AccountDetails) authentication.getPrincipal();
+
+        return transactionService.sellCrypto(data, account.getUsername());
     }
 }
 

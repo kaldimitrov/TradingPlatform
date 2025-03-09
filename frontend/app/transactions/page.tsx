@@ -52,7 +52,8 @@ export default function Transactions() {
                           <tr>
                             <th className="left" scope="col">Asset</th>
                             <th className="center" scope="col">Quantity</th>
-                            <th className="center" scope="col">Purchase Price</th>
+                            <th className="center" scope="col">Crypto Price</th>
+                            <th className="center" scope="col">Profit</th>
                             <th className="center" scope="col">Date</th>
                             <th className="center" scope="col">Transaction Type</th>
                           </tr>
@@ -72,7 +73,9 @@ export default function Transactions() {
                                 amount,
                                 type,
                                 timestamp,
+                                profit
                               } = transaction;
+                              const profitLossClass = profit < 0 ? "down" : "up";
                               const typeClass = type === TransactionType.BUY ? "badge-green" : "badge-red";
                               return (
                                 <tr key={index}>
@@ -100,10 +103,14 @@ export default function Transactions() {
                                       ${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 18 })}
                                     </span>
                                   </td>
+                                    <td className="center v-align-middle">
+                                    <span className={"bold " + profitLossClass}>
+                                      {type === TransactionType.SELL ? `$${profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 18 })}` : '-'}
+                                    </span>
+                                    </td>
                                   <td className="center v-align-middle">
                                     <span className="bold">
                                         {new Date(timestamp).toLocaleString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}
-
                                     </span>
                                   </td>
                                   <td className={"center v-align-middle "}>

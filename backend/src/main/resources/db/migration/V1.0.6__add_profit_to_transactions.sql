@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS transactions
+    ADD COLUMN profit DECIMAL(10, 2);

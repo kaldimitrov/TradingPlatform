@@ -2,7 +2,7 @@ import { environment } from "@/environment/environment";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const isTokenExpired = (token: string) => {
+export const isTokenExpired = (token: string | null) => {
   if (!token) return true;
 
   try {

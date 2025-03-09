@@ -1,5 +1,7 @@
 package com.crypto.trading.service;
 
+import com.crypto.trading.exception.ErrorCode;
+import com.crypto.trading.exception.TradingException;
 import com.crypto.trading.model.CryptoPrice;
 import com.crypto.trading.repository.CryptoPriceRepository;
 import org.springframework.data.domain.Sort;
@@ -17,6 +19,12 @@ public class CryptoPriceService {
     public CryptoPriceService(CryptoPriceRepository cryptoPriceRepository, SimpMessagingTemplate messagingTemplate) {
         this.cryptoPriceRepository = cryptoPriceRepository;
         this.messagingTemplate = messagingTemplate;
+    }
+
+    public CryptoPrice findBySymbolOrThrow(String symbol) {
+        return cryptoPriceRepository.findById(symbol).orElseThrow(
+                () -> new TradingException(ErrorCode.RESOURCE_NOT_FOUND, "Currency not found")
+        );
     }
 
     public List<CryptoPrice> getAllCryptoPricesSortedByPrice() {

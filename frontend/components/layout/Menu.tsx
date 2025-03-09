@@ -12,7 +12,6 @@ export default function MainMenu() {
         setCurrentMenuItem(pathname);
     }, [pathname]);
 
-    const checkCurrentMenuItem = (path: string) => currentMenuItem === path ? "current-item" : "";
     const checkParentActive = (paths: string[]) => paths.some(path => currentMenuItem.startsWith(path)) ? "current-menu-item" : "";
 
     return (
@@ -21,21 +20,8 @@ export default function MainMenu() {
                 <li className={`menu-item menu-item-has-children`}>
                     <Link href="/">Home </Link>
                 </li>
-                <li className={`menu-item menu-item-has-children ${checkParentActive(["/exchange",
-                    "/buy-crypto-confirm",
-                    "/buy-crypto-details",])}`}>
-                    <Link href="#">Buy Crypto</Link>
-                    <ul className="sub-menu">
-                        <li className={`menu-item ${checkCurrentMenuItem("/exchange")}`}>
-                            <Link href="/exchange">Buy Crypto Select</Link>
-                        </li>
-                        <li className={`menu-item ${checkCurrentMenuItem("/buy-crypto-confirm")}`}>
-                            <Link href="/buy-crypto-confirm">Buy Crypto Confirm</Link>
-                        </li>
-                        <li className={`menu-item ${checkCurrentMenuItem("/buy-crypto-details")}`}>
-                            <Link href="/buy-crypto-details">Buy Crypto Details</Link>
-                        </li>
-                    </ul>
+                <li className={`menu-item menu-item-has-children ${checkParentActive(["/exchange"])}`}>
+                    <Link href="/exchange">Exchange</Link>
                 </li>
                 <li className={`menu-item ${pathname === "/wallet" ? "current-menu-item" : ""}`}>
                     <Link href="/wallet">Wallet

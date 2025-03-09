@@ -28,6 +28,10 @@ public class AccountService implements UserDetailsService {
         this.holdingService = holdingService;
     }
 
+    public Account saveAccount(Account account) {
+        return accountRepository.save(account);
+    }
+
     public Account registerUser(RegisterRequest data) {
         if (accountRepository.findByEmail(data.getEmail()).isPresent()) {
             throw new TradingException(ErrorCode.INVALID_INPUT, "Email already in use");

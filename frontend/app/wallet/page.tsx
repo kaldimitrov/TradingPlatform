@@ -51,10 +51,10 @@ export default function Wallet() {
                         <thead>
                           <tr>
                             <th className="left" scope="col">Asset</th>
-                            <th className="left" scope="col">Quantity</th>
-                            <th className="left" scope="col">Avg. Purchase Price</th>
-                            <th className="left" scope="col">Current Price</th>
-                            <th className="left" scope="col">Profit/Loss</th>
+                            <th className="center" scope="col">Quantity</th>
+                            <th className="center" scope="col">Avg. Purchase Price</th>
+                            <th className="center" scope="col">Current Price</th>
+                            <th className="center" scope="col">Profit/Loss</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -90,25 +90,29 @@ export default function Wallet() {
                                       <span className="unit">{name}</span>
                                     </p>
                                   </td>
-                                  <td className="color-success left v-align-middle">
+                                  <td className="color-success center v-align-middle">
                                     <span className="bold">
                                       {quantity.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 18 })} {symbol}
                                     </span>
                                   </td>
-                                  <td className="left v-align-middle">
+                                  <td className="center v-align-middle">
                                     <span className="bold">
                                       ${avgPurchasePrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                     </span>
                                   </td>
-                                  <td className="left v-align-middle">
+                                  <td className="center v-align-middle">
                                     <span className="bold">
                                       ${price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                     </span>
                                   </td>
-                                  <td className={`${profitLossClass} left v-align-middle`}>
-                                    {profitLoss > 0 && '+'}
-                                    {profitLoss.toFixed(2)}%
-                                  </td>
+                                    <td className={`${profitLossClass} center v-align-middle`}>
+                                    {avgPurchasePrice === 0 ? '-' : (
+                                      <>
+                                      {profitLoss > 0 && '+'}
+                                      {profitLoss.toFixed(2)}%
+                                      </>
+                                    )}
+                                    </td>
                                 </tr>
                               );
                             })
