@@ -1,35 +1,28 @@
 'use client';
 import Layout from "@/components/layout/Layout";
+import { ToastMessages } from "@/enums/toast-messages.enum";
 import { CryptoHolding } from "@/models/crypto-holding.model";
+import { getHoldings } from "@/services/requests/crypto-requests";
 import { useState } from "react";
-
-const holdings: CryptoHolding[] = [
-  {
-    currency: {
-      symbol: "BTC",
-      name: "Bitcoin",
-      price: 50000,
-      changePct: -2.5,
-      volume: 1000000,
-    },
-    quantity: 0.5,
-    avgPurchasePrice: 45000,
-  },
-  {
-    currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      price: 4000,
-      changePct: 3.2,
-      volume: 500000,
-    },
-    quantity: 2,
-    avgPurchasePrice: 3500,
-  },
-];
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 export default function Wallet() {
-  const [cryptoHoldings, setCryptoHoldings] = useState(holdings);
+  const [cryptoHoldings, setCryptoHoldings] = useState([] as CryptoHolding[]);
+    useEffect(() => {
+        const fetchAccount = async () => {
+            try {
+                setCryptoHoldings(await getHoldings());
+            } catch (error) {
+                if (toast.isActive(ToastMessages.ERROR_FETCHING_WALLET_ASSETS)) {
+                    return;
+                }
+                toast.error(ToastMessages.ERROR_FETCHING_WALLET_ASSETS, { toastId: ToastMessages.ERROR_FETCHING_WALLET_ASSETS });
+            }
+        };
+
+        fetchAccount();
+    }, []);
 
   return (
     <Layout breadcrumbTitle="Wallet Assets">
