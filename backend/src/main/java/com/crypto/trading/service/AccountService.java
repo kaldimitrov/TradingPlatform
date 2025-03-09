@@ -1,6 +1,8 @@
 package com.crypto.trading.service;
 
 import com.crypto.trading.controller.dto.RegisterRequest;
+import com.crypto.trading.exception.ErrorCode;
+import com.crypto.trading.exception.TradingException;
 import com.crypto.trading.model.Account;
 import com.crypto.trading.repository.AccountRepository;
 import com.crypto.trading.security.AccountDetails;
@@ -25,7 +27,7 @@ public class AccountService implements UserDetailsService {
 
     public Account registerUser(RegisterRequest data) {
         if (accountRepository.findByEmail(data.getEmail()).isPresent()) {
-            throw new RuntimeException("Email already in use");
+            throw new TradingException(ErrorCode.INVALID_INPUT, "Email already in use");
         }
         Account account = Account.builder()
                 .email(data.getEmail())
