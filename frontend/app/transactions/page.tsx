@@ -1,49 +1,42 @@
 'use client';
 import Layout from "@/components/layout/Layout";
-import { CryptoHolding } from "@/models/crypto-holding.model";
-import { useState } from "react";
-
-const holdings: CryptoHolding[] = [
-  {
-    currency: {
-      symbol: "BTC",
-      name: "Bitcoin",
-      price: 50000,
-      changePct: -2.5,
-      volume: 1000000,
-    },
-    quantity: 0.5,
-    avgPurchasePrice: 45000,
-  },
-  {
-    currency: {
-      symbol: "ETH",
-      name: "Ethereum",
-      price: 4000,
-      changePct: 3.2,
-      volume: 500000,
-    },
-    quantity: 2,
-    avgPurchasePrice: 3500,
-  },
-];
+import { ToastMessages } from "@/enums/toast-messages.enum";
+import { TransactionType } from "@/enums/transaction-type.enum";
+import { Transaction } from "@/models/transaction.model";
+import { getTransactions } from "@/services/requests/transaction-requests";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Transactions() {
-  const [cryptoHoldings, setCryptoHoldings] = useState(holdings);
+  const [transactions, setTransactions] = useState([] as Transaction[]);
+      useEffect(() => {
+          const fetchTransactions = async () => {
+              try {
+                setTransactions(await getTransactions());
+              } catch (error) {
+                  if (toast.isActive(ToastMessages.ERROR_FETCHING_TRANSACTIONS)) {
+                      return;
+                  }
+                  toast.error(ToastMessages.ERROR_FETCHING_TRANSACTIONS, { toastId: ToastMessages.ERROR_FETCHING_TRANSACTIONS });
+              }
+          };
+  
+          fetchTransactions();
+      }, []);
 
   return (
-    <Layout breadcrumbTitle="Wallet Assets">
+    <Layout breadcrumbTitle="Transactions">
       <div>
         <section className="wallet buy-crypto flat-tabs">
           <div className="container">
             <div className="row">
               <div className="col-xl-3 col-md-12">
                 <ul className="menu-tab">
-                  <li className="active">
-                    <h6 className="fs-16">Assets Overview</h6>
-                  </li>
                   <li>
-                    <h6 className="fs-16"><a href="/transactions">Transactions</a></h6>
+                    <h6 className="fs-16"><a href="/wallet">Assets Overview</a></h6>
+                  </li>
+                  <li className="active">
+                    <h6 className="fs-16">Transactions</h6>
                   </li>
                   <li>
                     <h6 className="fs-16"><a href="/exchange">Exchange</a></h6>
@@ -58,29 +51,29 @@ export default function Transactions() {
                         <thead>
                           <tr>
                             <th className="left" scope="col">Asset</th>
-                            <th className="left" scope="col">Quantity</th>
-                            <th className="left" scope="col">Avg. Purchase Price</th>
-                            <th className="left" scope="col">Current Price</th>
-                            <th className="left" scope="col">Profit/Loss</th>
+                            <th className="center" scope="col">Quantity</th>
+                            <th className="center" scope="col">Purchase Price</th>
+                            <th className="center" scope="col">Date</th>
+                            <th className="center" scope="col">Transaction Type</th>
                           </tr>
                         </thead>
                         <tbody>
-                          {cryptoHoldings.length === 0 ? (
+                          {transactions.length === 0 ? (
                             <tr>
                               <td colSpan={5} className="text-center" style={{opacity: 0.7}}>
-                                You don't have any assets in your wallet. Head over to the <a href="/exchange">exchange tab</a> to get started.
+                                You don't have any transactions yet. Head over to the <a href="/exchange">exchange tab</a> to get started.
                               </td>
                             </tr>
                           ) : (
-                            cryptoHoldings.map((holding, index) => {
+                            transactions.map((transaction, index) => {
                               const {
-                                currency: { symbol, name, price },
+                                currency: { symbol, name },
                                 quantity,
-                                avgPurchasePrice,
-                              } = holding;
-                              const profitLoss = ((price - avgPurchasePrice) / avgPurchasePrice) * 100;
-                              const profitLossClass = profitLoss < 0 ? "down" : "up";
-
+                                amount,
+                                type,
+                                timestamp,
+                              } = transaction;
+                              const typeClass = type === TransactionType.BUY ? "badge-green" : "badge-red";
                               return (
                                 <tr key={index}>
                                   <td className="asset">
@@ -97,24 +90,26 @@ export default function Transactions() {
                                       <span className="unit">{name}</span>
                                     </p>
                                   </td>
-                                  <td className="color-success left v-align-middle">
+                                  <td className="color-success center v-align-middle">
                                     <span className="bold">
                                       {quantity.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 18 })} {symbol}
                                     </span>
                                   </td>
-                                  <td className="left v-align-middle">
+                                  <td className="center v-align-middle">
                                     <span className="bold">
-                                      ${avgPurchasePrice.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                      ${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 18 })}
                                     </span>
                                   </td>
-                                  <td className="left v-align-middle">
+                                  <td className="center v-align-middle">
                                     <span className="bold">
-                                      ${price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                        {new Date(timestamp).toLocaleString(undefined, { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}
+
                                     </span>
                                   </td>
-                                  <td className={`${profitLossClass} left v-align-middle`}>
-                                    {profitLoss > 0 && '+'}
-                                    {profitLoss.toFixed(2)}%
+                                  <td className={"center v-align-middle "}>
+                                    <span className={"bold " + typeClass}>
+                                      {type}
+                                    </span>
                                   </td>
                                 </tr>
                               );

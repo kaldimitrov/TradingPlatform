@@ -4,8 +4,8 @@ import { CurrencyPrice } from "./currency-price.mode";
 export interface Transaction {
   id: string;
   currency: CurrencyPrice;
-  quantity: string;
-  amount: string;
+  quantity: number;
+  amount: number;
   type: TransactionType;
   timestamp: string;
 }
